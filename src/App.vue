@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <img alt="Piggy Chef" src="./assets/piggy.png">
-    <PoundsAndOunces />
+    <div>Multiplier: <input type="number" v-model.number="rootMultiplier" /></div>
+    <PoundsAndOunces :rootMultiplier="rootMultiplier"/>
   </div>
 </template>
 
@@ -14,7 +15,13 @@ import PoundsAndOunces from './components/PoundsAndOunces.vue';
     PoundsAndOunces,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public data() {
+    return {
+      rootMultiplier: 2,
+    };
+  }
+}
 </script>
 
 <style>

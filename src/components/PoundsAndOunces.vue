@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <div>Pounds: <input type="number" min="0" v-model.number="pounds"/></div>
-        <div>Oz: <input type="number" min="0" v-model.number="ounces"/></div>
-        <div>Multiplier: <input type="number" min="0" v-model.number="multiplier"/></div>
+    <div class="measurement">
+        <div>Pounds: <input type="number" min="0" v-model.number="pounds"/> Oz: <input type="number" min="0" v-model.number="ounces"/></div>
         <div>Result: {{result}}</div>
     </div>
 </template>
@@ -12,16 +10,16 @@ import { Component, Prop, Vue, PropSync } from 'vue-property-decorator';
 
 @Component
 export default class PoundsAndOunces extends Vue {
+    @Prop() public rootMultiplier!: number;
     public data() {
         return {
             pounds: 1,
             ounces: 0,
-            multiplier: 2,
         };
     }
 
     get result(): string {
-        const raw: number = (this.$data.ounces + (this.$data.pounds * 16)) * this.$data.multiplier;
+        const raw: number = (this.$data.ounces + (this.$data.pounds * 16)) * this.rootMultiplier;
         const rawPounds: number = Math.floor(raw / 16);
         const rawOunces: number = raw % 16;
 
@@ -31,5 +29,17 @@ export default class PoundsAndOunces extends Vue {
 </script>
 
 <style scoped>
+input {
+    width: 50pt;
 
+}
+
+.measurement {
+    border: 1pt;
+    border-style:  solid;
+    border-left: 0pt;
+    border-top: 0pt;
+    border-color: #cecece;
+    background-color: #dedede;
+}
 </style>
