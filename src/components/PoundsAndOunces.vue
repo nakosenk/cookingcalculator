@@ -1,7 +1,7 @@
 <template>
     <div class="measurement">
         <div>Pounds: <input type="number" min="0" v-model.number="pounds"/> Oz: <input type="number" min="0" v-model.number="ounces"/></div>
-        <div>Result: {{result}}</div>
+        <div class="result">Result: {{result}}</div>
     </div>
 </template>
 
@@ -31,7 +31,10 @@ export default class PoundsAndOunces extends Vue {
 <style scoped>
 input {
     width: 50pt;
-
+    border: 1pt solid #cecece;
+    border-top: 0pt;
+    border-left: 0pt;
+    background-color: #eeeeee;
 }
 
 .measurement {
@@ -41,5 +44,11 @@ input {
     border-top: 0pt;
     border-color: #cecece;
     background-color: #dedede;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+
+.result {
+    font-weight:  bold;
 }
 </style>
